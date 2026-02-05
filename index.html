@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+
+<html lang="fi">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>KasinoBoss – Parhaat kasinobonukset</title>
+<meta content="KasinoBoss kokoaa yhteen parhaat kasinobonukset: verovapaat, selkeät ja helposti hyödynnettävät tarjoukset – Bossin takuu." name="description"/>
+<meta content="#0B2A3F" name="theme-color"/>
+<meta content="KasinoBoss – Parhaat kasinobonukset" property="og:title"/>
+<meta content="Bossin suositukset: verovapaat ja selkeät kasinobonukset sekä pikaopas bonusten valintaan." property="og:description"/>
+<meta content="website" property="og:type"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+    :root{
+      --bg-dark:#0B2A3F;
+      --bg-light:#0E3A5C;
+      --stroke: rgba(255,255,255,.12);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.75);
+
+      --accent-blue:#66D9FF;
+      --accent-gold:#F5C542;
+      --accent-green:#35E3A1;
+      --accent-pink:#FF6BD6;
+      --accent-purple:#7B5CFF;
+
+      --shadow: 0 16px 45px rgba(0,0,0,.35);
+      --radius: 22px;
+    }
+
+    *{ box-sizing:border-box; margin:0; padding:0; font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; }
+    html{ scroll-behavior:smooth; }
+
+    body{
+      min-height:100vh;
+      color:var(--text);
+      background:
+        radial-gradient(900px 500px at 20% 10%, rgba(102,217,255,.22), transparent 60%),
+        radial-gradient(700px 400px at 80% 20%, rgba(245,197,66,.18), transparent 55%),
+        radial-gradient(650px 450px at 50% 85%, rgba(53,227,161,.16), transparent 55%),
+        linear-gradient(180deg, var(--bg-light), var(--bg-dark));
+      overflow-x:hidden;
+    }
+
+    .bubbles{
+      position:fixed; inset:0;
+      pointer-events:none;
+      opacity:.35;
+    }
+    .bubble{
+      position:absolute;
+      width:14px; height:14px;
+      border-radius:999px;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.9), rgba(255,255,255,0));
+      box-shadow:
+        0 0 25px rgba(102,217,255,.25),
+        0 0 35px rgba(255,107,214,.12);
+      animation: floatUp linear infinite;
+    }
+    @keyframes floatUp{
+      from{ transform: translateY(40vh) translateX(0) scale(1); opacity:.0; }
+      10%{ opacity:.5; }
+      60%{ opacity:.35; }
+      to{ transform: translateY(-120vh) translateX(30px) scale(1.35); opacity:0; }
+    }
+
+    .wrap{
+      max-width:1100px;
+      margin:0 auto;
+      padding: 54px 18px 70px;
+    }
+
+    .hero{
+      text-align:center;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:16px;
+      margin-bottom:34px;
+    }
+
+    .logo{
+      width:min(320px, 70vw);
+      filter: drop-shadow(0 14px 28px rgba(0,0,0,.45));
+      animation: logoFloat 6s ease-in-out infinite;
+    }
+    @keyframes logoFloat{
+      0%,100%{ transform: translateY(0); }
+      50%{ transform: translateY(-6px); }
+    }
+
+    .headline{
+      font-size: clamp(1.7rem, 3.5vw, 2.6rem);
+      line-height:1.15;
+      color: var(--accent-blue);
+      text-shadow: 0 0 18px rgba(102,217,255,.18);
+      font-weight:700;
+      margin-top:6px;
+    }
+
+    .sub{
+      max-width:760px;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .ctaRow{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      justify-content:center;
+      margin-top:10px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding: 14px 22px;
+      border-radius: 999px;
+      text-decoration:none;
+      font-weight:700;
+      transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+      border:1px solid transparent;
+      user-select:none;
+    }
+    .btnPrimary{
+      color:#1b1b1b;
+      background: linear-gradient(135deg, var(--accent-gold), #ffd86b);
+      box-shadow: 0 10px 30px rgba(245,197,66,.30);
+    }
+    .btnPrimary:hover{ transform: translateY(-2px) scale(1.02); box-shadow: 0 14px 40px rgba(245,197,66,.45); }
+
+    .btnGhost{
+      color: var(--text);
+      background: rgba(255,255,255,.06);
+      border-color: var(--stroke);
+      box-shadow: 0 10px 26px rgba(0,0,0,.18);
+      backdrop-filter: blur(8px);
+    }
+    .btnGhost:hover{ transform: translateY(-2px) scale(1.02); filter: brightness(1.05); }
+
+    .btnDiscord{
+      color: #0b1220;
+      background: linear-gradient(135deg, rgba(123,92,255,1), rgba(102,217,255,1));
+      box-shadow: 0 12px 34px rgba(123,92,255,.25);
+    }
+    .btnDiscord:hover{
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 16px 44px rgba(123,92,255,.40);
+    }
+
+    .pillRow{
+      display:flex; flex-wrap:wrap; gap:10px;
+      justify-content:center;
+      margin-top: 14px;
+      opacity:.95;
+    }
+    .pill{
+      padding: 8px 12px;
+      border-radius:999px;
+      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,.05);
+      font-size:.92rem;
+      color: rgba(255,255,255,.85);
+      backdrop-filter: blur(10px);
+    }
+    .pill b{ color: var(--accent-green); }
+
+    .sectionTitle{
+      margin: 34px 0 12px;
+      font-size: 1.25rem;
+      color: rgba(255,255,255,.92);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .sectionTitle span{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+    }
+    .spark{
+      width:10px;height:10px;border-radius:999px;
+      background: var(--accent-pink);
+      box-shadow: 0 0 22px rgba(255,107,214,.55);
+    }
+
+    .featured{
+      border: 1px solid rgba(102,217,255,.22);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .featured::before{
+      content:"";
+      position:absolute; inset:-2px;
+      background: radial-gradient(600px 200px at 30% 0%, rgba(102,217,255,.22), transparent 60%),
+                  radial-gradient(500px 240px at 85% 20%, rgba(245,197,66,.18), transparent 60%);
+      pointer-events:none;
+    }
+
+    .cardInner{
+      position:relative;
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:16px;
+      padding: 18px;
+      align-items:stretch;
+    }
+
+    .brandRow{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom:10px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px;
+      min-width:0;
+    }
+
+    .siteLogo{
+      width:44px; height:44px; border-radius:14px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid var(--stroke);
+      display:flex; align-items:center; justify-content:center;
+      font-weight:800;
+      color: var(--accent-blue);
+      box-shadow: 0 10px 24px rgba(0,0,0,.18);
+      flex:0 0 auto;
+    }
+
+    .siteLogo img{max-width:85%; max-height:85%; object-fit:contain; display:block;}
+
+    .brandText{ min-width:0; }
+    .brandName{
+      font-weight:800;
+      font-size:1.05rem;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+    .tiny{
+      font-size:.88rem;
+      color: rgba(255,255,255,.70);
+    }
+
+    .tag{
+      flex:0 0 auto;
+      padding: 7px 10px;
+      border-radius:999px;
+      font-size:.85rem;
+      font-weight:800;
+      letter-spacing:.2px;
+      border:1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.06);
+    }
+    .tagHot{
+      border-color: rgba(245,197,66,.35);
+      color:#1c1c1c;
+      background: linear-gradient(135deg, var(--accent-gold), #ffd86b);
+      box-shadow: 0 12px 30px rgba(245,197,66,.25);
+    }
+
+    .bonusTitle{
+      font-size:1.35rem;
+      font-weight:900;
+      color: rgba(255,255,255,.95);
+      margin-bottom:6px;
+    }
+    .bonusBig{
+      font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+      font-weight:900;
+      color: var(--accent-green);
+      text-shadow: 0 0 20px rgba(53,227,161,.20);
+      margin: 10px 0 10px;
+    }
+
+    .features{
+      display:flex; flex-wrap:wrap;
+      gap:10px;
+      margin-top: 8px;
+    }
+    .chip{
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid var(--stroke);
+      font-size:.9rem;
+      color: rgba(255,255,255,.86);
+    }
+    .chip b{ color: var(--accent-blue); }
+
+    .ctaBox{
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border: 1px solid var(--stroke);
+      border-radius: calc(var(--radius) - 6px);
+      padding: 14px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      gap:12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.22);
+    }
+
+    .ratingRow{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      color: rgba(255,255,255,.80);
+      font-size:.95rem;
+    }
+    .stars{
+      letter-spacing: 1px;
+      color: var(--accent-gold);
+      text-shadow: 0 0 16px rgba(245,197,66,.15);
+      font-weight:900;
+    }
+
+    .btnFull{ width:100%; text-align:center; }
+
+    .fineprint{
+      font-size:.82rem;
+      color: rgba(255,255,255,.65);
+      line-height:1.35;
+    }
+
+    .smallGrid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .smallCard{
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.025));
+      border: 1px solid var(--stroke);
+      border-radius: var(--radius);
+      box-shadow: 0 12px 30px rgba(0,0,0,.25);
+      padding: 14px;
+      position:relative;
+      overflow:hidden;
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+    }
+    .smallCard:hover{
+      transform: translateY(-4px);
+      box-shadow: 0 18px 42px rgba(0,0,0,.35);
+      border-color: rgba(102,217,255,.22);
+    }
+    .smallCard::before{
+      content:"";
+      position:absolute; inset:-2px;
+      background: radial-gradient(300px 140px at 20% 0%, rgba(102,217,255,.16), transparent 60%);
+      pointer-events:none;
+    }
+
+    .smallTop{
+      position:relative;
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+      margin-bottom: 10px;
+    }
+    .miniLogo{
+      width:40px; height:40px; border-radius:14px;
+      background: rgba(255,255,255,.07);
+      border: 1px solid var(--stroke);
+      display:flex; align-items:center; justify-content:center;
+      font-weight:900;
+      color: var(--accent-blue);
+      flex:0 0 auto;
+    }
+    .smallName{
+      position:relative;
+      font-weight:900;
+      font-size:1rem;
+      margin-bottom: 4px;
+    }
+
+    /* Discord section */
+    .discordSection{
+      margin-top: 28px;
+    }
+    .discordCard{
+      border-radius: var(--radius);
+      border: 1px solid rgba(123,92,255,.28);
+      background: linear-gradient(180deg, rgba(123,92,255,.16), rgba(255,255,255,.03));
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .discordCard::before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(650px 220px at 18% 0%, rgba(123,92,255,.28), transparent 60%),
+        radial-gradient(500px 240px at 85% 35%, rgba(102,217,255,.18), transparent 60%);
+      pointer-events:none;
+    }
+    .discordInner{
+      position:relative;
+      padding: 18px;
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:14px;
+      align-items:center;
+    }
+    .discordTitle{
+      font-size:1.35rem;
+      font-weight:900;
+      color: rgba(255,255,255,.96);
+      margin-bottom: 6px;
+    }
+    .discordText{
+      color: rgba(255,255,255,.78);
+      line-height:1.5;
+    }
+    .discordBullets{
+      margin-top:10px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+    .discordBullets .chip{
+      background: rgba(0,0,0,.14);
+    }
+
+    .footer{
+      margin-top: 26px;
+      text-align:center;
+      color: rgba(255,255,255,.65);
+      font-size:.9rem;
+      line-height:1.6;
+    }
+    .footer a{ color: rgba(255,255,255,.85); text-decoration:none; border-bottom:1px dashed rgba(255,255,255,.35); }
+    .footer a:hover{ filter: brightness(1.1); }
+
+
+    /* Accessibility + navigation */
+    .skipLink{
+      position:absolute; left:-999px; top:10px;
+      background: #ffffff; color:#0b1220;
+      padding:10px 14px; border-radius:12px;
+      z-index:9999;
+    }
+    .skipLink:focus{ left:12px; outline: none; box-shadow: 0 10px 24px rgba(0,0,0,.25); }
+
+    .topBar{
+      position:sticky; top:0; z-index:50;
+      margin: 0 auto 18px;
+      max-width:1100px;
+      padding: 10px 18px;
+      backdrop-filter: blur(10px);
+      background: rgba(11,42,63,.55);
+      border-bottom: 1px solid var(--stroke);
+    }
+    .topBarInner{
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+    }
+    .brandMini{
+      display:flex; align-items:center; gap:10px;
+      color: var(--text);
+      text-decoration:none;
+      font-weight:900;
+      letter-spacing:.2px;
+    }
+    .brandDot{
+      width:10px; height:10px; border-radius:999px;
+      background: var(--accent-gold);
+      box-shadow: 0 0 18px rgba(245,197,66,.35);
+    }
+    .nav{
+      display:flex; flex-wrap:wrap; gap:10px;
+    }
+    .nav a{
+      color: rgba(255,255,255,.88);
+      text-decoration:none;
+      padding: 8px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      font-weight:700;
+      font-size:.92rem;
+    }
+    .nav a:hover{ filter: brightness(1.08); transform: translateY(-1px); }
+    :focus-visible{
+      outline: 3px solid rgba(102,217,255,.65);
+      outline-offset: 3px;
+      border-radius: 12px;
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      *, *::before, *::after{
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    @media (max-width: 900px){
+      .cardInner{ grid-template-columns: 1fr; }
+      .smallGrid{ grid-template-columns: 1fr; }
+      .discordInner{ grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<a class="skipLink" href="#main">Siirry sisältöön</a>
+<div aria-hidden="true" class="bubbles">
+<div class="bubble" style="left:8%; top:85%; animation-duration:14s; animation-delay:-2s;"></div>
+<div class="bubble" style="left:18%; top:92%; width:10px; height:10px; animation-duration:12s; animation-delay:-6s;"></div>
+<div class="bubble" style="left:36%; top:88%; width:18px; height:18px; animation-duration:16s; animation-delay:-3s;"></div>
+<div class="bubble" style="left:52%; top:90%; width:12px; height:12px; animation-duration:13s; animation-delay:-8s;"></div>
+<div class="bubble" style="left:67%; top:95%; width:16px; height:16px; animation-duration:17s; animation-delay:-5s;"></div>
+<div class="bubble" style="left:82%; top:86%; width:11px; height:11px; animation-duration:12s; animation-delay:-9s;"></div>
+<div class="bubble" style="left:92%; top:93%; width:20px; height:20px; animation-duration:18s; animation-delay:-7s;"></div>
+</div>
+<header class="topBar" role="banner">
+<div class="topBarInner">
+<a aria-label="KasinoBoss – takaisin alkuun" class="brandMini" href="#top">
+<span aria-hidden="true" class="brandDot"></span>
+<span>KasinoBoss</span>
+</a>
+<nav aria-label="Päävalikko" class="nav">
+<a href="#bonukset">Bonukset</a>
+<a href="#discord">Discord</a>
+<a href="#opas">Pikaopas</a>
+</nav>
+</div>
+</header>
+<main class="wrap" id="main">
+<div aria-hidden="true" id="top"></div>
+<section class="hero">
+<img alt="KasinoBoss logo" class="logo" decoding="async" height="240" loading="lazy" src="logo.png" width="640"/>
+<div class="headline">Parhaat kasinobonukset - Bossin takuu!</div>
+<div class="sub">
+        KasinoBoss poimii listalle vain laadukkaat kasinot – Bossin takuu. Täältä löydät verovapaat ja
+        kierrätysvapaat bonukset sekä tarjoukset jotka ovat oikeasti selkeitä ja helppoja hyödyntää.
+      </div>
+<div class="ctaRow">
+<a class="btn btnPrimary" href="#bonukset">🎁 Katso bonukset</a>
+<a class="btn btnGhost" href="#discord">💬 Liity Discordiin</a>
+<a class="btn btnGhost" href="#opas">📘 Bossin pikaopas</a>
+</div>
+<div class="pillRow">
+<div class="pill">✅ <b>Turvalliset</b> kasinot</div>
+<div class="pill">⚡ <b>Nopeat</b> kotiutukset</div>
+<div class="pill">💶 <b>Verovapaat</b> voitot</div>
+</div>
+</section>
+<section id="bonukset">
+<div class="sectionTitle">
+<span><span class="spark"></span> Bossin suositukset</span>
+<span class="tiny">Päivitetty: <span id="updatedDate">—</span></span>
+</div>
+<article class="featured">
+<div class="cardInner">
+<div>
+<div class="brandRow">
+<div class="brand">
+<div class="siteLogo"><img alt="Tuplaus.com logo" decoding="async" loading="lazy" onerror="this.style.display='none'; this.parentElement.textContent='Tuplaus';" src="tuplaus-logo.svg"/></div>
+<div class="brandText">
+<div class="brandName">Tuplaus.com</div>
+<div class="tiny">Minimitalletus: 10€ • Kotiutus: 0–24h</div>
+</div>
+</div>
+<div class="tag tagHot">🔥 Bossin #1 valinta</div>
+</div>
+<div class="bonusTitle">Talletusbonus + tuplausmahdollisuus</div>
+<div class="bonusBig">100% Bonus 100€ asti + 200 FS</div><div class="tiny">Lisäksi 5 Tuplausmahdollisuutta</div>
+<div class="features">
+<div class="chip">🎯 Kierrätys: <b>35x</b></div>
+<div class="chip">🟢 Verovapaa: <b>Kyllä</b></div>
+<div class="chip">🏢 Wildz Group -brändi: <b>Kyllä</b></div>
+<div class="chip">📞 <b>24/7 asiakaspalvelu</b></div><div class="chip">💡 Vinkki: <b>katso ehdot ennen talletusta</b></div>
+</div>
+</div>
+<aside class="ctaBox">
+<div class="ratingRow">
+<div><b>Arvosana</b></div>
+<div class="stars">★★★★★ <span style="color:rgba(255,255,255,.75); font-weight:700;">(4.8)</span></div>
+</div>
+<a class="btn btnPrimary btnFull" href="https://go.wildzaffiliates.com/visit/?bta=1000150&amp;nci=6033" rel="nofollow sponsored noopener" target="_blank">
+              🎰 Tästä pelaamaan!
+            </a>
+<div class="fineprint">
+              18+ Pelaa vastuullisesti.
+            </div>
+</aside>
+</div>
+</article>
+<div class="smallGrid">
+<article class="smallCard">
+<div class="smallTop">
+<div class="miniLogo">A</div>
+<div class="tag">✨ Uutuus</div>
+</div>
+<div class="smallName">Berriez.com</div>
+<div class="tiny">Minimitalletus: 20€</div>
+<div class="bonusBig" style="font-size:1.35rem; margin:10px 0 8px;">365 ilmaiskierrosta + 20% Päivittäinen Cashback</div>
+<div class="tiny">Kierrätysvaatimus: 10x • Kotiutus: 0–24h</div>
+<div class="smallActions" style="margin-top:10px; display:flex; flex-direction:column; gap:10px;">
+<a class="btn btnPrimary" href="https://record.ganadugaming.com/_AMye8_Sdnf76PBA04iUMN2Nd7ZgqdRLk/1/" rel="nofollow sponsored noopener" style="padding:12px 14px; font-weight:800;" target="_blank">🎁 Lunasta bonus</a>
+<a class="btn btnGhost" href="https://record.ganadugaming.com/_AMye8_Sdnf76PBA04iUMN2Nd7ZgqdRLk/1/-terms" rel="nofollow noopener" style="padding:12px 14px; font-weight:800;" target="_blank">📄 Katso ehdot</a>
+</div>
+</article>
+<article class="smallCard">
+<div class="smallTop">
+<div class="miniLogo">B</div>
+<div class="tag">⚡ Nopea</div>
+</div>
+<div class="smallName">Epicbet</div>
+<div class="tiny">Minimitalletus: 20€</div>
+<div class="bonusBig" style="font-size:1.35rem; margin:10px 0 8px;">100% Vedonlyöntibonus 200€ asti + 300€ käteisbonus!</div>
+<div class="tiny">Kierrätysvaatimus: Kasino 0x, Vedonlyönti 6x</div>
+<div class="smallActions" style="margin-top:10px; display:flex; flex-direction:column; gap:10px;">
+<a class="btn btnPrimary" href="https://my.sisu.partners/visit/?bta=35746&brand=epicbet" rel="nofollow sponsored noopener" style="padding:12px 14px; font-weight:800;" target="_blank">🚀 Siirry kasinolle</a>
+<a class="btn btnGhost" href="https://my.sisu.partners/visit/?bta=35746&brand=epicbet-terms" rel="nofollow noopener" style="padding:12px 14px; font-weight:800;" target="_blank">📄 Katso ehdot</a>
+</div>
+</article>
+<article class="smallCard">
+<div class="smallTop">
+<div class="miniLogo">C</div>
+<div class="tag">💎 Premium</div>
+</div>
+<div class="smallName">Crown Spins</div>
+<div class="tiny">Minimitalletus: 25€</div>
+<div class="bonusBig" style="font-size:1.35rem; margin:10px 0 8px;">150% jopa 600€</div>
+<div class="tiny">Kierrätys: 35x • Kotiutus: 0–24h</div>
+<div class="smallActions" style="margin-top:10px; display:flex; flex-direction:column; gap:10px;">
+<a class="btn btnPrimary" href="https://example.com/affiliate-link-4" rel="nofollow sponsored noopener" style="padding:12px 14px; font-weight:800;" target="_blank">🎰 Pelaamaan</a>
+<a class="btn btnGhost" href="https://example.com/affiliate-link-4-terms" rel="nofollow noopener" style="padding:12px 14px; font-weight:800;" target="_blank">📄 Katso ehdot</a>
+</div>
+</article>
+</div>
+</section>
+<!-- DISCORD -->
+<section class="discordSection" id="discord">
+<div class="sectionTitle" style="margin-top:28px;">
+<span>
+<span class="spark" style="background: var(--accent-purple); box-shadow:0 0 22px rgba(123,92,255,.55);"></span>
+          KasinoBoss Discord
+        </span>
+<span class="tiny">discord • vinkit • bonukset</span>
+</div>
+<div class="discordCard">
+<div class="discordInner">
+<div>
+<div class="discordTitle">Liity Bossin porukkaan 👑</div>
+<div class="discordText">
+              Discordissa jaetaan uusimmat bonukset, keskustellaan kasinoista ja autetaan toisiamme löytämään
+              parhaat verovapaat ja kierrätysvapaat tarjoukset. Liity: <b>discord.gg/kasinoboss</b>
+</div>
+<div class="discordBullets">
+<div class="chip">💎 Uusimmat bonukset</div>
+<div class="chip">⚡ Kotiutusvinkit</div>
+<div class="chip">🏆 Yhteisön voitot</div>
+</div>
+</div>
+<div class="ctaBox" style="border-color: rgba(123,92,255,.28);">
+<div class="ratingRow">
+<div><b>KasinoBoss</b></div>
+<div class="tiny"> </div>
+</div>
+<a class="btn btnDiscord btnFull" href="https://discord.gg/kasinoboss" rel="noopener" target="_blank">
+              💬 Liity Discordiin
+            </a>
+<div class="fineprint">
+              Linkki avautuu uuteen välilehteen.
+            </div>
+</div>
+</div>
+</div>
+</section>
+<!-- OPAS -->
+<section id="opas">
+<div class="sectionTitle" style="margin-top:28px;">
+<span>
+<span class="spark" style="background: var(--accent-green); box-shadow:0 0 22px rgba(53,227,161,.55);"></span>
+          Bossin pikaopas: miten valita bonukset?
+        </span>
+<span class="tiny"> </span>
+</div>
+<div class="smallGrid">
+<article class="smallCard">
+<div class="smallName">1) Katso kierrätys</div>
+<div class="tiny">
+            Mitä pienempi kierrätys, sitä helpompi kotiuttaa bonuksella saadut voitot. Bossin takuu:
+            etusijalla selkeät ja järkevät ehdot.
+          </div>
+</article>
+<article class="smallCard">
+<div class="smallName">2) Verovapaus Suomessa</div>
+<div class="tiny">
+            Jos kasino toimii ETA/EEA-alueella, voitot ovat tyypillisesti verovapaita Suomessa.
+            Tarkista aina lisenssi ja peliyhtiön sijainti ennen pelaamista.
+          </div>
+</article>
+<article class="smallCard">
+<div class="smallName">3) Kotiutukset kuntoon</div>
+<div class="tiny">
+            Nopeat kotiutukset = parempi pelikokemus. Tarkista käsittelyajat, maksutavat ja mahdolliset
+            vahvistukset (KYC). Bossin takuu suosii sujuvia kotiutuksia.
+          </div>
+</article>
+<article class="smallCard">
+<div class="smallName">4) Hyödynnä bonukset fiksusti</div>
+<div class="tiny">
+            Valitse bonus pelityylin mukaan: käteiskierrokset ovat usein helppo startti, ja talletusbonus
+            sopii pidempään pelaamiseen. Tarkista max panos ja aikarajat, jotta bonus ei “valu hukkaan”.
+          </div>
+</article>
+<article class="smallCard">
+<div class="smallName">5) Kierrätysvapaa ≠ aina paras</div>
+<div class="tiny">
+            Kierrätysvapaa bonus voi olla huippu, mutta tarkista myös muut ehdot: max kotiutus, pelirajoitukset
+            ja voimassaoloaika. Bossin takuu: kokonaisuus ratkaisee.
+          </div>
+</article>
+<article class="smallCard">
+<div class="smallName">6) Pidä pelikassa hallussa</div>
+<div class="tiny">
+            Aseta budjetti, pidä taukoja ja pelaa vain viihteeksi. Hyvä bonus ei korvaa vastuullista pelaamista.
+          </div>
+</article>
+</div>
+<div class="footer">
+        18+ Pelaa vastuullisesti.<br/>
+<span class="tiny">© <span id="currentYear">—</span> KasinoBoss</span><br/>
+        Apua pelaamiseen <a href="https://peluuri.fi" rel="noopener" target="_blank">peluuri.fi</a>
+</div>
+</section>
+</main>
+<script>
+    (function () {
+      // Päivitä "Päivitetty" -teksti paikallisella (fi-FI) päivämäärällä.
+      const updated = document.getElementById('updatedDate');
+      if (updated) {
+        const now = new Date();
+        updated.textContent = now.toLocaleDateString('fi-FI', { year: 'numeric', month: 'long', day: 'numeric' });
+      }
+
+      // Päivitä footerin vuosiluku.
+      const y = document.getElementById('currentYear');
+      if (y) y.textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>
