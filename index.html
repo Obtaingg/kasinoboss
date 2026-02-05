@@ -81,9 +81,14 @@
     }
 
     .logo{
-      width: min(320px, 70vw);
-      height: auto;         
-      object-fit: contain;
+     max-width: 320px;     /* hallittu koko */
+      width: 100%;          /* skaalautuu pienillä näytöillä */
+      height: auto;         /* säilyttää kuvasuhteen */
+      display: block;
+      object-fit: contain;  /* EI VENYTÄ */
+      filter: drop-shadow(0 14px 28px rgba(0,0,0,.45));
+}
+
     }
     @keyframes logoFloat{
       0%,100%{ transform: translateY(0); }
