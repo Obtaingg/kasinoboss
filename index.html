@@ -81,9 +81,9 @@
     }
 
     .logo{
-      width:min(320px, 70vw);
-      filter: drop-shadow(0 14px 28px rgba(0,0,0,.45));
-      animation: logoFloat 6s ease-in-out infinite;
+      width: min(320px, 70vw);
+      height: auto;         
+      object-fit: contain;
     }
     @keyframes logoFloat{
       0%,100%{ transform: translateY(0); }
@@ -538,7 +538,7 @@
 <main class="wrap" id="main">
 <div aria-hidden="true" id="top"></div>
 <section class="hero">
-<img alt="KasinoBoss logo" class="logo" decoding="async" height="240" loading="lazy" src="images/kasinoboss-logo.png" width="640"/>
+<img alt="KasinoBoss logo" class="logo" decoding="async" loading="lazy" src="images/kasinoboss-logo.png" width="640"/>
 <div class="headline">Parhaat kasinobonukset - Bossin takuu!</div>
 <div class="sub">
         KasinoBoss poimii listalle vain laadukkaat kasinot – Bossin takuu. Täältä löydät verovapaat ja
