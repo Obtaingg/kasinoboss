@@ -87,8 +87,7 @@
       display: block;
       object-fit: contain;  /* EI VENYTÄ */
       filter: drop-shadow(0 14px 28px rgba(0,0,0,.45));
-}
-
+      animation: logoFloat 4.5s ease-in-out infinite;
     }
     @keyframes logoFloat{
       0%,100%{ transform: translateY(0); }
@@ -201,6 +200,12 @@
       box-shadow: var(--shadow);
       overflow:hidden;
       position:relative;
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+    }
+    .featured:hover{
+      transform: translateY(-4px);
+      box-shadow: 0 22px 50px rgba(0,0,0,.4);
+      border-color: rgba(102,217,255,.4);
     }
     .featured::before{
       content:"";
@@ -515,7 +520,7 @@
       .discordInner{ grid-template-columns: 1fr; }
     }
   
-    /* Duelbits highlight */
+    /* Bossin nosto -kortin korostus */
     .superFeatured{
       margin-top: 14px;
       border-radius: var(--radius);
@@ -524,6 +529,11 @@
       box-shadow: var(--shadow);
       overflow:hidden;
       position:relative;
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .superFeatured:hover{
+      transform: translateY(-4px);
+      box-shadow: 0 22px 50px rgba(0,0,0,.4);
     }
     .superFeatured::before{
       content:"";
@@ -550,21 +560,21 @@
     .leaderboardBox b{ color: var(--accent-gold); }
 
   
-/* Duelbits overrides (do not affect other cards) */
-#duelbits.superFeatured{
-  background:#1e2d3b !important;
-  border:2px solid #34c06d !important;
-  box-shadow:none !important;
-}
-#duelbits.superFeatured::before{
-  content:none !important;
-  display:none !important;
-}
-
+  
 </style>
 </head>
 <body>
 <a class="skipLink" href="#main">Siirry sisältöön</a>
+<div class="topBar">
+<div class="topBarInner">
+<a class="brandMini" href="#top"><span class="brandDot"></span> KasinoBoss</a>
+<nav class="nav" aria-label="Päänavigaatio">
+<a href="#bonukset">🎁 Katso bonukset</a>
+<a href="#discord">💬 Liity Discordiin</a>
+<a href="#opas">📘 Bossin pikaopas</a>
+</nav>
+</div>
+</div>
 <div aria-hidden="true" class="bubbles">
 <div class="bubble" style="left:8%; top:85%; animation-duration:14s; animation-delay:-2s;"></div>
 <div class="bubble" style="left:18%; top:92%; width:10px; height:10px; animation-duration:12s; animation-delay:-6s;"></div>
@@ -600,87 +610,21 @@
 <span class="tiny">Päivitetty: <span id="updatedDate">—</span></span>
 </div>
 
-<article class="superFeatured" id="duelbits" style="background:#1e2d3b; border:2px solid #34c06d;  margin-bottom:40px;">
-  <div class="cardInner">
-    <div>
-      <div class="brandRow">
-        <div class="brand">
-          <div class="siteLogo">
-            <img alt="Duelbits.com logo" decoding="async" loading="lazy"
-                 src="images/duelbits.png"
-                 onerror="this.style.display='none'; this.parentElement.textContent='Duelbits';"/>
-          </div>
-          <div class="brandText">
-            <div class="brandName">Duelbits.com</div>
-            <div class="tiny">Maailman huippukasino! • Talletukset & kotiutukset minuuteissa!</div>
-          </div>
-        </div>
-        </div>
-
-      <div class="bonusTitle">Huikea ilmaiskierrosbonus!</div>
-      <div class="bonusBig">100% bonus + ilmaiskierroksia jopa 250 asti</div>
-      <div class="tiny">Aktivoi bonus heti talletuksen jälkeen!</div>
-
-      <div class="features">
-        <div class="chip">📞 <b>24/7 asiakaspalvelu</b></div>
-        <div class="chip">🎁 Minimitalletus $20 </div>
-        <div class="chip">👑 VIP: <b>Jopa 15% lossback kruunattuna rakebackilla!</b></div>
-        <div class="chip">🏦 Salamannopeat talletukset & kotiutukset</div>
-      </div>
-
-      <div class="leaderboardBox">
-        Rekisteröitymällä ja tallettamalla linkistä voit nousta <b>leaderboardissa</b> ylöspäin ja voittaa rahapalkintoja!.
-      </div>
-    </div>
-
-    <aside class="ctaBox" style="border-color: rgba(255,107,214,.28);">
-      <div class="ratingRow">
-        <div><b>Bossin nosto!</b></div>
-        <div class="tiny"></div>
-      </div>
-
-      <a class="btn btnPrimary btnFull"
-         href="https://go.duelbits.io/visit/?bta=37793&nci=5867&campaign=3ec59ded-3468-4c1e-aeb2-8362ea5be6f6"
-         rel="nofollow sponsored noopener" target="_blank">
-        🚀 Rekisteröidy &amp; pelaa!
-      </a>
-
-      <a class="btn btnGhost btnFull"
-         href="https://obtain.gg"
-         rel="noopener" target="_blank">
-        🏆 Katso leaderboard sijoitus täältä!
-      </a>
-      <div style="margin-top:12px;">
-        <a class="btn btnPrimary btnFull" href="https://discord.gg/kasinoboss" target="_blank" rel="noopener">
-          💬 Lue lisää Discordissa!
-        </a>
-      </div>
-
-
-      <div class="fineprint">
-        18+ Pelaa vastuullisesti / Tarkasta ehdot ennen talletusta.
-      </div>
-    </aside>
-  </div>
-
-</article>
-
-
-<article class="featured">
+<article class="superFeatured" id="tuplaus" style="margin-top:14px;">
 <div class="cardInner">
 <div>
 <div class="brandRow">
 <div class="brand">
 <div class="siteLogo"><img alt="Tuplaus.com logo" decoding="async" loading="lazy" onerror="this.style.display='none'; this.parentElement.textContent='Tuplaus';" src="images/tuplaus.png"/></div>
 <div class="brandText">
-<div style="transform: scale(0.9); opacity:0.85;"><div class="brandName">Tuplaus.com</div></div>
+<div class="brandName">Tuplaus.com</div>
 <div class="tiny">Minimitalletus: 10€ • Kotiutus: 0–24h</div>
 </div>
 </div>
 <div class="tag tagHot">🔥 Bossin suositus!</div>
 </div>
-<div style="transform: scale(0.9); opacity:0.85;"><div class="bonusTitle">Talletusbonus + tuplausmahdollisuus</div></div>
-<div class="bonusBig">100% Bonus 100€ asti + 200 FS</div><div style="transform: scale(0.9); opacity:0.85;"><div class="tiny">Lisäksi 5 Tuplausmahdollisuutta</div></div>
+<div class="bonusTitle">Talletusbonus + tuplausmahdollisuus</div>
+<div class="bonusBig">100% Bonus 100€ asti + 200 FS</div><div class="tiny">Lisäksi 5 Tuplausmahdollisuutta</div>
 <div class="features">
 <div class="chip">🎯 Kierrätys: <b>35x</b></div>
 <div class="chip">🟢 Verovapaa: <b>Kyllä</b></div>
@@ -688,7 +632,7 @@
 <div class="chip">📞 <b>24/7 asiakaspalvelu</b></div><div class="chip">💡 Vinkki: <b>katso ehdot ennen talletusta</b></div>
 </div>
 </div>
-<aside class="ctaBox">
+<aside class="ctaBox" style="border-color: rgba(245,197,66,.35);">
 <div class="ratingRow">
 <div><b>Arvosana</b></div>
 <div class="stars">★★★★★ <span style="color:rgba(255,255,255,.75); font-weight:700;">(4.8)</span></div>
